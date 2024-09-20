@@ -1,0 +1,116 @@
+﻿Build1=Default,com.genesis.mediapipe
+File1=delmy.jpg
+File2=MainPage.bal
+File3=papi.jpg
+File4=pose_landmarker_full.task
+File5=pose_landmarker_heavy.task
+FileGroup1=Default Group
+FileGroup2=Default Group
+FileGroup3=Default Group
+FileGroup4=Default Group
+FileGroup5=Default Group
+Group=Default Group
+Library1=appcompat
+Library2=b4xpages
+Library3=core
+Library4=mediapipe
+Library5=opencv3_test
+Library6=phone
+Library7=runtimepermissions
+Library8=camera2
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="34"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~'''CreateResourceFromFile(Macro, Themes.LightTheme)~\n~~\n~SetApplicationAttribute(android:theme,"@style/MyAppTheme")~\n~~\n~CreateResource(values, theme.xml,~\n~<resources>~\n~    <style name="MyAppTheme" parent="Theme.AppCompat.Light.NoActionBar">~\n~        <item name="colorPrimary">#0098FF</item>~\n~        <item name="colorPrimaryDark">#007CF5</item>~\n~        <item name="colorAccent">#AAAA00</item>~\n~        <item name="windowNoTitle">true</item>~\n~        <item name="windowActionBar">false</item>~\n~    </style>~\n~</resources>~\n~)~\n~~\n~AddPermission(android.hardware.camera)~\n~AddPermission(android.permission.RECORD_AUDIO)~\n~AddPermission(android.permission.READ_EXTERNAL_STORAGE)~\n~AddPermission(android.permission.INTERNET)~\n~AddPermission(android.permission.ACCESS_NETWORK_STATE)~\n~'End of default text.~\n~
+Module1=|relative|..\B4XMainPage
+Module2=CamEx2
+Module3=Starter
+NumberOfFiles=5
+NumberOfLibraries=8
+NumberOfModules=3
+Version=13
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: MediaPipe Example
+	#VersionCode: 1
+	#VersionName: 1.0.0
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: portrait
+	#CanInstallToExternalStorage: False
+#End Region
+
+#BridgeLogger: True
+
+#Region  Activity Attributes 
+	#FullScreen: False
+	#IncludeTitle: True
+#End Region
+
+'#BridgeLogger: True
+#ExcludedLib: guava-27.0.1-android.jar
+#AdditionalJar: tasks-core-0.10.14.aar
+#AdditionalJar: tasks-vision-0.10.14.aar
+#AdditionalJar: com.google.android.datatransport:transport-runtime
+#AdditionalJar: transport-backend-cct-3.1.0.jar
+#AdditionalJar: flogger-0.6.jar
+#AdditionalJar: flogger-system-backend-0.6.jar
+'''#AdditionalJar: listenablefuture-1.0.jar
+'''#AdditionalJar: listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar
+#AdditionalJar: com.google.guava:guava
+#AdditionalJar: com.google.guava:listenablefuture
+'''#AdditionalJar: guava-27.0.1-android.jar
+
+
+#DebuggerForceStandardAssets: true
+
+ #Extends: androidx.appcompat.app.AppCompatActivity
+
+Sub Process_Globals
+	Public ActionBarHomeClicked As Boolean
+End Sub
+
+Sub Globals
+
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	Dim pm As B4XPagesManager
+	pm.Initialize(Activity)
+End Sub
+
+'Template version: B4A-1.01
+#Region Delegates
+
+Sub Activity_ActionBarHomeClick
+	ActionBarHomeClicked = True
+	B4XPages.Delegate.Activity_ActionBarHomeClick
+	ActionBarHomeClicked = False
+End Sub
+
+Sub Activity_KeyPress (KeyCode As Int) As Boolean
+	Return B4XPages.Delegate.Activity_KeyPress(KeyCode)
+End Sub
+
+Sub Activity_Resume
+	B4XPages.Delegate.Activity_Resume
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+	B4XPages.Delegate.Activity_Pause
+End Sub
+
+Sub Activity_PermissionResult (Permission As String, Result As Boolean)
+	B4XPages.Delegate.Activity_PermissionResult(Permission, Result)
+End Sub
+
+Sub Create_Menu (Menu As Object)
+	B4XPages.Delegate.Create_Menu(Menu)
+End Sub
+
+#if Java
+public boolean _onCreateOptionsMenu(android.view.Menu menu) {
+	 processBA.raiseEvent(null, "create_menu", menu);
+	 return true;
+	
+}
+#End If
+#End Region
+
+'Program code should go into B4XMainPage and other pages.
